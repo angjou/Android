@@ -21,10 +21,14 @@
            android:theme="@style/ThemeOverlay.AppCompat.Dark"
            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
            android:elevation="4dp"></androidx.appcompat.widget.Toolbar>
+
+
+
        <FrameLayout
            android:id="@+id/fragment_container"
            android:layout_width="match_parent"
            android:layout_height="500dp">
+
        </FrameLayout>
 
        <Button
@@ -33,7 +37,10 @@
            android:layout_width="50dp"
            android:layout_height="50dp"
            android:layout_gravity="end"
-           android:background="@drawable/ic_editprofile"></Button>
+           android:layout_marginTop="8dp"
+           android:layout_marginRight="16dp"
+           android:drawableBottom="@android:drawable/ic_menu_edit"
+           android:drawableTint="@color/colorPrimaryDark" />
 
    </LinearLayout>
 <com.google.android.material.navigation.NavigationView

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
+    android:layout_width="330dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="8dp"
+    android:layout_marginBottom="12dp"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#fff8e0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="4dp">
+
+            <ImageView
+                android:id="@+id/cardImg"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@android:drawable/ic_menu_report_image" />
+
+            <TextView
+                android:id="@+id/cardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="4dp"
+                android:text="TITLE"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_deleete"
+            style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+            android:layout_width="29dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="4dp"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"
+            android:backgroundTintMode="src_over"
+            android:clickable="true"
+            android:cursorVisible="true" />
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

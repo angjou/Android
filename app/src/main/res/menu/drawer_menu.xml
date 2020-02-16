@@ -12,11 +12,19 @@
             <item
                 android:id="@+id/nav_profileedit"
                 android:icon="@drawable/ic_editprofile"
-                android:title=" Edit Profile" />
+                android:title="Edit profile" />
             <item
                 android:id="@+id/nav_story"
                 android:icon="@drawable/ic_story"
-                android:title=" New story" />
+                android:title="New story" />
+            <item
+                android:id="@+id/nav_stories"
+                android:icon="@drawable/ic_stories"
+                android:title="Stories" />
+            <item
+                android:id="@+id/nav_calendar"
+                android:icon="@drawable/ic_calendar"
+                android:title="Calendar" />
         </group>
 
 

@@ -1,4 +1,4 @@
-package com.example.mydiary_01.Profile;
+package com.example.mydiary_01.NodesClasses;
 
 public  class User {
     private int userID;
@@ -21,9 +21,9 @@ public  class User {
         this.userPassport=passport;
     }
 
-public void setUser(int id, String name, String surname, String address, String email,
+public void setUser( String name, String surname, String address, String email,
                     String oib, String passport){
-    this.userID = id;
+
     this.userName= name;
     this.userSurname=surname;
     this.userAddress=address;

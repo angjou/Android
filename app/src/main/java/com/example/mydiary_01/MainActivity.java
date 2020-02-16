@@ -7,16 +7,30 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.mydiary_01.Profile.MyDBHandlerProfile;
+import com.example.mydiary_01.Calendar.CalendarFragment;
+import com.example.mydiary_01.Database.ProfileDataSource;
+import com.example.mydiary_01.Database.StoryDataSource;
+import com.example.mydiary_01.NodesClasses.Story;
 import com.example.mydiary_01.Profile.ProfileEditFragment;
 import com.example.mydiary_01.Profile.ProfileFragment;
+import com.example.mydiary_01.Story.StoryEditFragment;
 import com.example.mydiary_01.Story.StoryFragment;
 
 import com.google.android.material.navigation.NavigationView;
@@ -24,38 +38,19 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String COLUMN_NAME = "UserName";
-    private static final String COLUMN_ID = "UserID";
-    private static final String COLUMN_SURNAME = "UserSurname";
-    private static final String COLUMN_ADDRESS = "UserAddress";
-    private static final String COLUMN_EMAIL = "UserEmail";
-    private static final String COLUMN_OIB  = "UserOooib";
-    private static final String COLUMN_PASSPORT  = "UserPassport";
     private DrawerLayout drawer;
-
+    StoryDataSource db ;
+    int i = 0;
+    private Button mButton ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // setting main view
         setContentView(R.layout.activity_main);
-
-        MyDBHandlerProfile dbHelper = new MyDBHandlerProfile(this);
-
-
-        /*ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, "bla");
-        values.put(COLUMN_ID, "AUTO_INCREMENT");
-        values.put(COLUMN_SURNAME,"A");
-        values.put(COLUMN_ADDRESS,"B");
-        values.put(COLUMN_EMAIL,"C");
-        values.put(COLUMN_OIB,"D");
-        values.put(COLUMN_PASSPORT,"E");
-
-        dbHelper.getWritableDatabase().insert("User", null, values);
-*/
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        //define views inside main view
+        mButton = findViewById(R.id.mainBtn);
         drawer = findViewById(R.id.draw_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -65,25 +60,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        if(savedInstanceState == null){
+//opening fragment
+if(new ProfileDataSource(this).isDbEmpty() && savedInstanceState == null)
+{
+    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileEditFragment()).commit();
+    navigationView.setCheckedItem(R.id.nav_profileedit);
+}else if(savedInstanceState == null ){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_profile);
         }
 
-        String query= "Select "+COLUMN_NAME + " FROM " + "User";
+  mButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-
-        //String name = cursor.getString(0);
-
-        //Log.d("Debug",name);
-        cursor.close();
-        db.close();
-        //save in Edit profile
-
-
-        //open edit view
+          getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StoryEditFragment()).commit();
+      }
+  });
 
     }
     //menubarfunctions
@@ -108,10 +101,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileEditFragment()).commit();
                 break;
             case R.id.nav_story:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StoryFragment()).commit();
-                /*Intent myIntent = new Intent(MainActivity.this, StoryActivity.class);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StoryEditFragment()).commit();
+                break;
+            case R.id.nav_stories:
+               getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StoryFragment()).commit();
 
-                MainActivity.this.startActivity(myIntent);*/
+                break;
+            case R.id.nav_calendar:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalendarFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -119,4 +116,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-}
+    private void displayDialog() {
+
+        db = new StoryDataSource(this.getBaseContext());
+        Dialog d = new Dialog(this);
+        d.setTitle("SQLITE DATA");
+        d.setContentView(R.layout.storyview_fragment);
+
+        //INITIALIZE VIEWS
+        final TextView title = (TextView) d.findViewById(R.id.viewTitle);
+        final TextView story = (TextView) d.findViewById(R.id.viewStory);
+        final ImageView img = d.findViewById(R.id.imgView);
+        Cursor cursor = db.initializeData();
+
+        int id;
+
+
+        if (cursor.getCount() == 0) {
+            Toast.makeText(this.getBaseContext(), "Empty database", Toast.LENGTH_SHORT).show();
+        } else {
+            do {
+
+                id = cursor.getInt(0);
+                story.setText(cursor.getString(1));
+
+                Bitmap bitmap = BitmapFactory.decodeByteArray(cursor.getBlob(2), 0, cursor.getBlob(2).length);
+                img.setImageBitmap(bitmap);
+                title.setText(cursor.getString(3));
+
+            } while (cursor.moveToNext());
+
+
+            //SHOW DIALOG
+            d.show();
+
+
+        }
+
+
+    }}
