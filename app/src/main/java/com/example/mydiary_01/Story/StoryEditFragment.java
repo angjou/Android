@@ -19,17 +19,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.mydiary_01.Database.ProfileDataSource;
 import com.example.mydiary_01.Database.StoryDataSource;
-import com.example.mydiary_01.MainActivity;
+
 import com.example.mydiary_01.NodesClasses.Story;
 import com.example.mydiary_01.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
-import static android.app.Activity.RESULT_OK;
 
 public class StoryEditFragment extends Fragment {
 

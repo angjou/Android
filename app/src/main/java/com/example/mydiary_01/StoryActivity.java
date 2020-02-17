@@ -1,7 +1,6 @@
 package com.example.mydiary_01;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,12 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.mydiary_01.Database.StoryDataSource;
 import com.example.mydiary_01.NodesClasses.Story;
-import com.example.mydiary_01.Story.MyAdapter;
 
 public class StoryActivity extends AppCompatActivity {
     Story story = new Story() ;
@@ -29,12 +25,15 @@ public class StoryActivity extends AppCompatActivity {
    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
-        int id = getIntent().getIntExtra("storyId",0);
         title = findViewById(R.id.viewTitle);
         text = findViewById(R.id.viewStory);
         img = findViewById(R.id.imageView);
         back = findViewById(R.id.btnBack);
+
+        int id = getIntent().getIntExtra("storyId",0);
+
         story = getData(id);
+
         title.setText(story.getStoryTitle());
         text.setText(story.getStory());
         Bitmap bitmap = BitmapFactory.decodeByteArray(story.getStoryImage(), 0, story.getStoryImage().length);

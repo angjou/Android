@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.mydiary_01.NodesClasses.Story;
 import com.example.mydiary_01.NodesClasses.User;
 
 public class ProfileDataSource {

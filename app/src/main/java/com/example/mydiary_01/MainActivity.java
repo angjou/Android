@@ -6,41 +6,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
-
-import android.app.Dialog;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.mydiary_01.Calendar.CalendarFragment;
 import com.example.mydiary_01.Database.ProfileDataSource;
-import com.example.mydiary_01.Database.StoryDataSource;
-import com.example.mydiary_01.NodesClasses.Story;
 import com.example.mydiary_01.Profile.ProfileEditFragment;
 import com.example.mydiary_01.Profile.ProfileFragment;
 import com.example.mydiary_01.Story.StoryEditFragment;
 import com.example.mydiary_01.Story.StoryFragment;
-
 import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    StoryDataSource db ;
-    int i = 0;
     private Button mButton ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

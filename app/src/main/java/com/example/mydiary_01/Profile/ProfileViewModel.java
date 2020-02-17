@@ -5,13 +5,9 @@ import android.database.SQLException;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.mydiary_01.Database.MyDBHandlerProfile;
 import com.example.mydiary_01.Database.ProfileDataSource;
 import com.example.mydiary_01.NodesClasses.User;
 import com.example.mydiary_01.R;
@@ -22,14 +18,7 @@ public class ProfileViewModel extends ViewModel {
 private MutableLiveData<User> selected = new MutableLiveData<>();
     public EditText name;
     public EditText surname;
-    public EditText address;
-    public EditText email;
-    public EditText oib;
-    public EditText passport;
 
-   /* public void setViewItem(String item) {
-        selected.setValue(item);
-    }*/
 
     public MutableLiveData<User> getItem(User user, Context context) {
         ProfileDataSource db = new ProfileDataSource(context);

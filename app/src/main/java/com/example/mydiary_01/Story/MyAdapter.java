@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mydiary_01.Database.MyDBHandlerProfile;
 import com.example.mydiary_01.NodesClasses.Story;
 import com.example.mydiary_01.R;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;

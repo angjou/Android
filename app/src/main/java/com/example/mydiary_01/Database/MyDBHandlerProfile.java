@@ -11,16 +11,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.example.mydiary_01.NodesClasses.Story;
 import com.example.mydiary_01.NodesClasses.User;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -41,7 +35,7 @@ public class MyDBHandlerProfile extends SQLiteOpenHelper {
     private static final String COLUMN_PASSPORT  = "UserPassport";
     private static final String COLUMN_IMG  = "IMAGE";
     private static final String COLUMN_TITLE  = "StoryTitle";
-    List<Story> stories ;
+
 
     //initialize database
 

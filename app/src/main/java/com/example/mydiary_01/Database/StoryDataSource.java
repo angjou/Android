@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.mydiary_01.NodesClasses.Story;
 
-import java.util.List;
-
 public class StoryDataSource {
     private SQLiteDatabase database;
     private MyDBHandlerProfile dbHelper;

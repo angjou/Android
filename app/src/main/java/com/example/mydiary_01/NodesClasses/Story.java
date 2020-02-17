@@ -1,11 +1,7 @@
 package com.example.mydiary_01.NodesClasses;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
-import java.sql.Blob;
+
 
 public class Story implements Serializable {
 
