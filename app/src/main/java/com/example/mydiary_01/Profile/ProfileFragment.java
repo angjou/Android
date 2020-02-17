@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -18,7 +17,7 @@ import com.example.mydiary_01.Database.ProfileDataSource;
 import com.example.mydiary_01.NodesClasses.User;
 import com.example.mydiary_01.R;
 
-import static android.widget.Toast.makeText;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -29,7 +28,7 @@ public class ProfileFragment extends Fragment {
     public TextView oib;
     public TextView passport;
     public TextView id;
-    Button edit;
+
     User user = new User();
 
 
@@ -48,15 +47,8 @@ public class ProfileFragment extends Fragment {
         ProfileDataSource db = new ProfileDataSource(getActivity());
         db.open();
         final ProfileViewModel model = ViewModelProviders.of(this).get(ProfileViewModel.class);
-       // loadUser(view);
-
-
-
-      // name.setText(user.getUserName());
-
 
        final LiveData<User> Profile = model.getItem(user,getActivity());
-       // user = model.get(getActivity(),user);
         Profile.observe(this, new Observer<User>() {
             @Override
             public void onChanged(User s) {
@@ -71,28 +63,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
+        db.close();
         return view;
     }
-
-  /*  public void loadUser(View view){
-        ProfileDataSource db = new ProfileDataSource(this.getActivity());
-        db.open();
-        User user = new User();
-     name = view.findViewById(R.id.nameView);
-     name.setText(db.loadName(user));
-        surname = view.findViewById(R.id.surnameView);
-        surname.setText(db.loadSurname(user));
-        address = view.findViewById(R.id.addressView);
-        address.setText(db.loadAddress(user));
-        email = view.findViewById(R.id.mailView);
-        email.setText(db.loadEmail(user));
-        oib = view.findViewById(R.id.oibView);
-        oib.setText(db.loadOIB(user));
-        passport = view.findViewById(R.id.passportView);
-        passport.setText(db.loadPassport(user));
-
-    }*/
-
 
 }

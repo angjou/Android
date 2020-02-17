@@ -116,42 +116,5 @@ if(new ProfileDataSource(this).isDbEmpty() && savedInstanceState == null)
 
     }
 
-    private void displayDialog() {
 
-        db = new StoryDataSource(this.getBaseContext());
-        Dialog d = new Dialog(this);
-        d.setTitle("SQLITE DATA");
-        d.setContentView(R.layout.storyview_fragment);
-
-        //INITIALIZE VIEWS
-        final TextView title = (TextView) d.findViewById(R.id.viewTitle);
-        final TextView story = (TextView) d.findViewById(R.id.viewStory);
-        final ImageView img = d.findViewById(R.id.imgView);
-        Cursor cursor = db.initializeData();
-
-        int id;
-
-
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this.getBaseContext(), "Empty database", Toast.LENGTH_SHORT).show();
-        } else {
-            do {
-
-                id = cursor.getInt(0);
-                story.setText(cursor.getString(1));
-
-                Bitmap bitmap = BitmapFactory.decodeByteArray(cursor.getBlob(2), 0, cursor.getBlob(2).length);
-                img.setImageBitmap(bitmap);
-                title.setText(cursor.getString(3));
-
-            } while (cursor.moveToNext());
-
-
-            //SHOW DIALOG
-            d.show();
-
-
-        }
-
-
-    }}
+    }

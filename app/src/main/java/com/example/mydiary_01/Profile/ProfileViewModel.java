@@ -63,20 +63,6 @@ private MutableLiveData<User> selected = new MutableLiveData<>();
      return false;
 
     }
-  /*public User get ( Context context,User user) {
-    ProfileDataSource db = new ProfileDataSource(context);
-    db.open();
-
-    db.loadName(user);
-    db.loadSurname(user);
-    db.loadAddress(user);
-    db.loadEmail(user);
-    db.loadOIB(user);
-    db.loadPassport(user);
-
-    return user;
-
-}*/
 
     public void get(View view, Context context){
         ProfileDataSource db = new ProfileDataSource(context);
@@ -85,16 +71,7 @@ private MutableLiveData<User> selected = new MutableLiveData<>();
         name = view.findViewById(R.id.nameEdit);
         name.setText(db.loadName(user),TextView.BufferType.EDITABLE);
         surname = view.findViewById(R.id.surnameEdit);
-      /*  surname.setText(db.loadSurname(user),TextView.BufferType.EDITABLE);
-        address = view.findViewById(R.id.addressEdit);
-        address.setText(db.loadAddress(user),TextView.BufferType.EDITABLE);
-        email = view.findViewById(R.id.mailEdit);
-        email.setText(db.loadEmail(user),TextView.BufferType.EDITABLE);
-        oib = view.findViewById(R.id.oibEdit);
-        oib.setText(db.loadOIB(user),TextView.BufferType.EDITABLE);
-        passport = view.findViewById(R.id.passportEdit);
-        passport.setText(db.loadPassport(user),TextView.BufferType.EDITABLE);
-*/
+        db.close();
     }
 
 

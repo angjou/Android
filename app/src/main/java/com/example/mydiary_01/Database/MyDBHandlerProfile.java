@@ -147,7 +147,6 @@ public void addStoryHandler(Story story)
     values.put(COLUMN_STORY_CONTENT, story.getStory());
     values.put(COLUMN_TITLE, story.getStoryTitle());
     values.put(COLUMN_IMG, story.getStoryImage());
-//Log.e("values",values);
     SQLiteDatabase db =  this.getWritableDatabase();
     db.insert(TABLE_NAME_II, null, values);
 
