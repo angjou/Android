@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff8e0"
+
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
@@ -34,9 +34,12 @@
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:background="#faffff"
+            android:orientation="vertical"
+            >
 
 
             <ImageView

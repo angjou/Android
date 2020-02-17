@@ -112,7 +112,11 @@ public class StoryEditFragment extends Fragment {
 
     public static byte[] getBytes(Bitmap image) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        if( image.getAllocationByteCount() > 2097152) {
+            image.compress(Bitmap.CompressFormat.JPEG, 0, stream);
+        }else{
+            image.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        }
         return stream.toByteArray();
     }
 }
